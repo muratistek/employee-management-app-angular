@@ -1,0 +1,10 @@
+<ul>
+  <li *ngFor="let employee of (employees | async)">
+    <p>First Name: {{employee.first_name}}</p>
+    <p>Last Name: {{employee.last_name}}</p>
+    <p>Email: {{employee.email}}</p>
+    <p>Salary: {{employee.salary}}</p>
+    <p>Gender: {{employee.gender}}</p>
+    <p>ID: {{employee.id}}</p>
+  </li>
+</ul>
