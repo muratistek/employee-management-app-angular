@@ -9,13 +9,15 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { NgbModule, NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { ViewEmployeeComponent } from './view-employee/view-employee.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeListComponent,
     AddEmployeeComponent,
-    ViewEmployeeComponent
+    ViewEmployeeComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
