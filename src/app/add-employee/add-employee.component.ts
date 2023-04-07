@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Apollo, gql } from 'apollo-angular';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -31,7 +31,7 @@ export class AddEmployeeComponent implements OnInit {
   newEmp: Employee | undefined;
   employeeID!: string | null;
 
-  constructor(private route: ActivatedRoute, private apollo: Apollo) { }
+  constructor(private route: ActivatedRoute, private apollo: Apollo, private router: Router) { }
 
   ngOnInit(): void {
     this.getEmployee();
@@ -106,6 +106,7 @@ export class AddEmployeeComponent implements OnInit {
           console.log("Employee updated: ", data.updateEmployee);
           this.employee = data.updateEmployee;
           this.loading = loading;
+          this.router.navigate(['/']);
         })
     }
     else {
@@ -123,17 +124,18 @@ export class AddEmployeeComponent implements OnInit {
           }
         `,
         variables: {
-          first_name: this.employee.first_name,
-          last_name: this.employee.last_name,
-          email: this.employee.email,
-          gender: this.employee.gender,
-          salary: this.employee.salary
+          first_name: this.first_name,
+          last_name: this.last_name,
+          email: this.email,
+          gender: this.gender,
+          salary: this.salary
         }
       })
         .subscribe(({ data, loading }) => {
           console.log("Employee added: ", data.addEmployee);
           this.employee = data.addEmployee;
           this.loading = loading;
+          window.location.href = "/";
         })
     }
   }
