@@ -16,7 +16,7 @@ export type User = {
 
 export type Query = {
   getEmployees: Employee[];
-  getEmployeeById(id: string): Employee;
+  getEmployeeByID(id: string): Employee;
   login(email_username: string, password: string): User;
 }
 
