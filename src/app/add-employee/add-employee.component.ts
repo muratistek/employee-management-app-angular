@@ -139,4 +139,11 @@ export class AddEmployeeComponent implements OnInit {
         })
     }
   }
+
+  onCancel(): void {
+    this.router.navigate(['/']);
+  }
+
+  // TODO: Delete employee 
+  // TODO: Add View Employee 
 }

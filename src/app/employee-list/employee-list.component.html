@@ -29,7 +29,7 @@
         <td>
           <a href="/addEmployee/{{employee.id}}" class="btn btn-warning" role="button">Update</a>&nbsp;
           <!-- <a onClick={()=> deleteEmployee(employee._id)} variant="danger" class="" role="button">Delete</a>{' '} -->
-          <a href="#" class="btn btn-danger" role="banner">Delete</a>&nbsp;
+          <button (click)="deleteEmployee(employee.id)" class="btn btn-danger" role="button">Delete</button>&nbsp;
           <a href="/viewEmployee/{{employee.id}}" class="btn btn-primary" role="button">View</a>
         </td>
       </tr>
