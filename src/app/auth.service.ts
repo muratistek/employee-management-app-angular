@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  email: string = "Email TEST"
-  username: string = "Username TEST"
+  email: string = ""
+  username: string = ""
+
+  currentUserID: string | undefined;
 }

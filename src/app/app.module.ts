@@ -10,6 +10,8 @@ import { NgbModule, NgbDate } from '@ng-bootstrap/ng-bootstrap';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { ViewEmployeeComponent } from './view-employee/view-employee.component';
 import { NavigationComponent } from './navigation/navigation.component';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { NavigationComponent } from './navigation/navigation.component';
     EmployeeListComponent,
     AddEmployeeComponent,
     ViewEmployeeComponent,
-    NavigationComponent
+    NavigationComponent,
+    SignupComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
