@@ -5,8 +5,6 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Employee, Query } from '../types';
 
-// const GET_EMPLOYEE_BY_ID = 
-
 @Component({
   selector: 'app-add-employee',
   templateUrl: './add-employee.component.html',
@@ -21,6 +19,14 @@ export class AddEmployeeComponent implements OnInit {
     salary: 0,
     gender: ""
   };
+
+  // Define form properties for employee update
+  public first_name: string = "";
+  public last_name: string = "";
+  public email: string = "";
+  public salary: number = 0;
+  public gender: string = "";
+
   loading = false;
   newEmp: Employee | undefined;
   employeeID!: string | null;
@@ -58,6 +64,11 @@ export class AddEmployeeComponent implements OnInit {
           console.log("data: ", data.getEmployeeByID);
           if (data.getEmployeeByID) {
             this.employee = data.getEmployeeByID;
+            this.first_name = this.employee.first_name;
+            this.last_name = this.employee.last_name;
+            this.email = this.employee.email;
+            this.salary = this.employee.salary;
+            this.gender = this.employee.gender
           }
           this.loading = loading;
         })
@@ -84,15 +95,16 @@ export class AddEmployeeComponent implements OnInit {
         `,
         variables: {
           id: this.employeeID,
-          first_name: this.employee.first_name,
-          last_name: this.employee.last_name,
-          email: this.employee.email,
-          gender: this.employee.gender,
-          salary: this.employee.salary
+          first_name: this.first_name,
+          last_name: this.last_name,
+          email: this.email,
+          gender: this.gender,
+          salary: this.salary
         }
       })
         .subscribe(({ data, loading }) => {
           console.log("Employee updated: ", data.updateEmployee);
+          this.employee = data.updateEmployee;
           this.loading = loading;
         })
     }
@@ -120,6 +132,7 @@ export class AddEmployeeComponent implements OnInit {
       })
         .subscribe(({ data, loading }) => {
           console.log("Employee added: ", data.addEmployee);
+          this.employee = data.addEmployee;
           this.loading = loading;
         })
     }
