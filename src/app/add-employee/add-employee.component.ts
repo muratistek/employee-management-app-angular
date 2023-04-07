@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Apollo, gql } from 'apollo-angular';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Employee, Query } from '../types';
+import { Employee } from '../types';
 
 @Component({
   selector: 'app-add-employee',
