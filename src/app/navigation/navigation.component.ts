@@ -14,4 +14,8 @@ export class NavigationComponent {
     this.email = auth.email
     this.username = auth.username
   }
+
+  logout(): void {
+    this.auth.logout();
+  }
 }

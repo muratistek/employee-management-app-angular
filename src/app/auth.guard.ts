@@ -2,12 +2,16 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Route, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import { Apollo, gql } from 'apollo-angular';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private apollo: Apollo) { }
+
+  username: string = "";
+  email: string = "";
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -17,7 +21,9 @@ export class AuthGuard implements CanActivate {
 
     const { path } = routeConfig as Route;
 
-    const userID = this.authService.currentUserID;
+    const userID = localStorage.getItem('currentUserID');
+    console.log(userID)
+    console.log(this.authService.checkLogin())
 
     if (userID) {
       if (path?.includes('signUp')) {
@@ -43,5 +49,4 @@ export class AuthGuard implements CanActivate {
       return false
     }
   }
-
 }
