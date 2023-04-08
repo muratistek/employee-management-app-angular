@@ -23,9 +23,11 @@ export class AuthGuard implements CanActivate {
 
     const userID = localStorage.getItem('currentUserID');
     console.log(userID)
-    console.log(this.authService.checkLogin())
 
     if (userID) {
+      if (path?.includes('login')) {
+        this.router.navigate(['/'])
+      }
       if (path?.includes('signUp')) {
         this.router.navigate(['/'])
       }
@@ -41,6 +43,9 @@ export class AuthGuard implements CanActivate {
       }
       else if (path?.includes('viewEmployee')) {
         this.router.navigate(['/'])
+      }
+      else if (path?.includes('login')) {
+        return true
       }
       else if (path?.includes('signUp')) {
         return true

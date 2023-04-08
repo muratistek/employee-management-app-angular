@@ -56,12 +56,15 @@ export class SignupComponent {
 
         setTimeout(() => {
           window.location.href = "/";
-        }, 3000)
+        }, 2000)
       },
         (error) => {
-          console.log("Error: ", error);
           this.message = "error";
           this.loading = false;
+
+          setTimeout(() => {
+            this.message = "";
+          }, 3000)
         }
       )
   }
