@@ -22,9 +22,9 @@ export class AuthGuard implements CanActivate {
     const { path } = routeConfig as Route;
 
     const userID = localStorage.getItem('currentUserID');
-    console.log(userID)
+    let token = localStorage.getItem('token');
 
-    if (userID) {
+    if (userID && token) {
       if (path?.includes('login')) {
         this.router.navigate(['/'])
       }

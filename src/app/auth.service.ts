@@ -14,6 +14,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('currentUserID');
+    localStorage.removeItem('token');
     this.email = "";
     this.username = "";
     this.id = "";

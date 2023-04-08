@@ -8,17 +8,18 @@ import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
 
 let currentUserID = localStorage.getItem('currentUserID');
-console.log(currentUserID)
+let token = localStorage.getItem('token');
+
 
 const routes: Routes = [
-  { path: '', redirectTo: currentUserID ? '/employeeList' : '/login', pathMatch: 'full' },
+  { path: '', redirectTo: (currentUserID && token) ? '/employeeList' : '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
   { path: 'signUp', component: SignupComponent, canActivate: [AuthGuard] },
   { path: 'employeeList', component: EmployeeListComponent, canActivate: [AuthGuard] },
   { path: 'addEmployee', component: AddEmployeeComponent, canActivate: [AuthGuard] },
   { path: 'addEmployee/:employeeID', component: AddEmployeeComponent, canActivate: [AuthGuard] },
   { path: 'viewEmployee/:employeeID', component: ViewEmployeeComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: currentUserID ? '/employeeList' : '/login', pathMatch: 'full' },
+  { path: '**', redirectTo: (currentUserID && token) ? '/employeeList' : '/login', pathMatch: 'full' },
 ];
 
 @NgModule({

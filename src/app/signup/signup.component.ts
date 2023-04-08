@@ -52,6 +52,7 @@ export class SignupComponent {
         this.user = data.signup;
         this.loading = loading;
         localStorage.setItem("currentUserID", this.user.id);
+        localStorage.setItem("token", myGlobals.token);
         this.message = "success";
 
         setTimeout(() => {

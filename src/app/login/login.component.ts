@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from '../types';
 import { Apollo, gql } from 'apollo-angular';
+import * as myGlobals from '../globals';
 
 @Component({
   selector: 'app-login',
@@ -49,6 +50,7 @@ export class LoginComponent {
         this.user = data.login;
         this.message = "success";
         localStorage.setItem("currentUserID", this.user.id);
+        localStorage.setItem("token", myGlobals.token);
         setTimeout(() => {
           window.location.href = "/";
         }, 2000)
