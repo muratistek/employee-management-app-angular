@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Apollo, gql } from 'apollo-angular';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { Employee } from '../types';
 
 @Component({
@@ -31,7 +29,11 @@ export class AddEmployeeComponent implements OnInit {
   newEmp: Employee | undefined;
   employeeID!: string | null;
 
-  constructor(private route: ActivatedRoute, private apollo: Apollo, private router: Router) { }
+  testUser: boolean | null;
+
+  constructor(private route: ActivatedRoute, private apollo: Apollo, private router: Router) {
+    this.testUser = window.localStorage.getItem('email') === "test@mail.com" || window.localStorage.getItem('username') === "testUser";
+  }
 
   ngOnInit(): void {
     this.getEmployee();
@@ -143,7 +145,4 @@ export class AddEmployeeComponent implements OnInit {
   onCancel(): void {
     this.router.navigate(['/']);
   }
-
-  // TODO: Delete employee 
-  // TODO: Add View Employee 
 }

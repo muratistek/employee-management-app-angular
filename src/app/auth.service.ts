@@ -5,8 +5,8 @@ import { Apollo, gql } from 'apollo-angular';
   providedIn: 'root'
 })
 export class AuthService {
-  email: string = ""
-  username: string = ""
+  email: string | null = localStorage.getItem('email')
+  username: string | null = localStorage.getItem('username')
   id: string = ""
   userID = localStorage.getItem('currentUserID');
 
@@ -15,6 +15,8 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('currentUserID');
     localStorage.removeItem('token');
+    window.localStorage.removeItem('email')
+    window.localStorage.removeItem('username')
     this.email = "";
     this.username = "";
     this.id = "";

@@ -13,7 +13,11 @@ import { Employee, Query } from '../types';
 export class EmployeeListComponent implements OnInit {
   employees: Observable<Employee[]> | undefined;
 
-  constructor(private apollo: Apollo) { }
+  testUser: boolean | null;
+
+  constructor(private apollo: Apollo) {
+    this.testUser = window.localStorage.getItem('email') === "test@mail.com" || window.localStorage.getItem('username') === "testUser";
+  }
 
   ngOnInit(): void {
     this.employees = this.apollo.watchQuery<Query>({

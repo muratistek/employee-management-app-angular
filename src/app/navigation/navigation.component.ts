@@ -7,8 +7,8 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent {
-  email: string;
-  username: string;
+  email: string | null;
+  username: string | null;
 
   constructor(private auth: AuthService) {
     this.email = auth.email
